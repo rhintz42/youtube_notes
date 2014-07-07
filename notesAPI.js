@@ -7,34 +7,34 @@
         }
       }
       
-      goBackInMilliseconds = function (milliseconds) {
+      function goBackInMilliseconds (milliseconds) {
         player.seekTo(player.getCurrentTime()-(milliseconds/1000));
       }
       
-      goBackInSeconds = function (seconds) {
+      function goBackInSeconds (seconds) {
         goBackInMilliseconds(1000*seconds);
       }
       
-      goForwardInMilliseconds = function (milliseconds) {
+      function goForwardInMilliseconds (milliseconds) {
         player.seekTo(player.getCurrentTime()+(milliseconds/1000));
       }
       
-      goForwardInSeconds = function (seconds) {
+      function goForwardInSeconds (seconds) {
         goForwardInMilliseconds(1000*seconds);
       }
       
-      setMode = function (m) {
+      function setMode (m) {
         mode = m;
-      }
-      
-      //Load in all of the values from yml file
-      
-      var functionAPI = {
-        'alert': alert,
-        'goBackInMilliseconds': goBackInMilliseconds,
-        'goBackInSeconds': goBackInSeconds,
-        'goForwardInMilliseconds': goForwardInMilliseconds,
-        'goForwardInSeconds': goForwardInSeconds,
-        'toggleVideoPlayback': toggleVideoPlayback
+        $("#mode").html('Mode: ' + mode);
       }
 
+      function noteCreate () {
+        if($("#note-edit").length > 0) {
+          $("#note-edit textarea").focus();
+        } else {
+          $("#notes-create-container").append("<div id='note-edit'><textarea rows='4' cols='50'></textarea></div>")
+          $("#note-edit textarea").focus();
+        }
+
+        setMode("noteEdit");
+      }

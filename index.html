@@ -2,17 +2,15 @@
 <html>
   <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
   <script src="http://jashkenas.github.io/underscore/underscore-min.js"></script>
+  <script src="notesAPI.js"></script>
   <script src="initializeVariables.js"></script>
   <script src="setupPlayer.js"></script>
-  <script src="notesAPI.js"></script>
   <script src="keyEvents.js"></script>
   <body>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="mode">Mode: video</div>
     <div id="player" style="float:left;"></div>
-    <div id="notes" style="float:left;">
-      Notes
-    </div>
-    <div id="video-notes" style="clear:both;"></div>
+    <div id="notes-create-container" style="float:left;"></div>
+    <div id="notes" style="float:left;clear:both;">Notes</div>
   </body>
 </html>

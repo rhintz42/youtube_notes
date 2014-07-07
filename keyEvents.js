@@ -16,8 +16,8 @@ $(function() {
       $("body").keydown(function(event) {
         // if one of the non-ASCII characters, then prevent browser's default action
         // Need to do it this way so that the keypress event still fires on single-keys
-        if(event.ctrlKey || event.altKey || event.shiftKey)
-          event.preventDefault();
+        //if(event.ctrlKey || event.altKey || event.shiftKey)
+        //  event.preventDefault();
         
         if(event.which != 20)
           keysDown.push(event.which);
@@ -25,9 +25,9 @@ $(function() {
       
       $("body").keypress(function(event) {
         //alert(event.which);
-        event.preventDefault();
-        if(keysDown.length > 1)
-          return false;
+        //event.preventDefault();
+        //if(keysDown.length > 1)
+        //  return false;
         
         return singleASCIIEvents(event);
       });
@@ -45,10 +45,12 @@ $(function() {
             command = command[k];
         });
         
-        if(command != undefined && command['default'] != undefined)
+        if(command != undefined && command['default'] != undefined) {
           executeDefaultAction(command.default);
-        
-        return false;
+	  return false;
+        }
+
+        return true;
       }
       
       executeDefaultAction = function(defaultDict) {
@@ -62,10 +64,12 @@ $(function() {
         
         command = commands[mode]['singleASCII'][event.which];
         
-        if(command != undefined && command['default'] != undefined)
+        if(command != undefined && command['default'] != undefined) {
           executeDefaultAction(command.default);
-        
-        return false;
+          return false;
+        }
+
+        return true;
       }
       
       singleKeyEvents = function(event) {
@@ -73,9 +77,11 @@ $(function() {
         
         command = commands[mode]['singleKey'][event.which];
         
-        if(command != undefined && command['default'] != undefined)
+        if(command != undefined && command['default'] != undefined) {
           executeDefaultAction(command.default);
-        
-        return false;
+          return false;
+        }
+
+        return true;
       }
 });

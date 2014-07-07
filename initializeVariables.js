@@ -61,6 +61,16 @@
                   }
                 ]
               }
+            }, 99: {//'c'
+              'default': {
+                'name': 'Create Note for Editing',
+                'functions': [
+                  {
+                    'key': 'noteCreate',
+                    'argument_list': []
+                  }
+                ]
+              }
             }, 104: {//'h'
               'default': {
                 'name': 'Go Back 5 seconds',
@@ -114,17 +124,27 @@
               }
             }
           }, 'singleKey': {
+          }
+        }, 'noteEdit': {
+          'combination': {
+          }, 'singleASCII': {
+          }, 'singleKey': {
             27: {
               'default': {
-                'name': 'p key Toggle Video',
+                'name': 'Switch to Video Mode',
                 'functions': [
                   {
-                    'key': 'toggleVideoPlayback',
-                    'argument_list': []
+                    'key': 'setMode',
+                    'argument_list': ["video"]
                   }
                 ]
               }
             }
+          }
+        }, 'noteView': {
+          'combination': {
+          }, 'singleASCII': {
+          }, 'singleKey': {
           }
         }
       };
@@ -136,3 +156,14 @@
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
+
+      var functionAPI = {
+        'alert': alert,
+        'goBackInMilliseconds': goBackInMilliseconds,
+        'goBackInSeconds': goBackInSeconds,
+        'goForwardInMilliseconds': goForwardInMilliseconds,
+        'goForwardInSeconds': goForwardInSeconds,
+        'noteCreate': noteCreate,
+        'setMode': setMode,
+        'toggleVideoPlayback': toggleVideoPlayback
+      }
